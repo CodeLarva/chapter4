@@ -28,14 +28,24 @@ def createVocabList(dataSet):
 
 
 """vocabList为词汇表，inputSet为某个文档"""
-
-
+#文档词模型
 def setOfWords2Vec(vocabList, inputSet):
     # 转化成以一维数组
     returnVec = [0] * len(vocabList)
     for word in inputSet:
         if word in vocabList:
             returnVec[vocabList.index(word)] = 1
+        else:
+            print("the word: %s is not in my Vocabulary!" % word)
+    return returnVec
+
+#词袋模型
+def bagOfWords2Vec(vocabList, inputSet):
+    # 转化成以一维数组
+    returnVec = [0] * len(vocabList)
+    for word in inputSet:
+        if word in vocabList:
+            returnVec[vocabList.index(word)] += 1
         else:
             print("the word: %s is not in my Vocabulary!" % word)
     return returnVec
